@@ -23,3 +23,10 @@ def con() -> psycopg2:
     atexit.register(clean_up)
     return conn
 
+
+def main() -> None:
+    print('Hello world')
+
+
+if __name__ == '__main__':
+    main()
