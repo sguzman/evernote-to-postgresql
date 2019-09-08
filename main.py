@@ -16,6 +16,8 @@ def read_xml() -> List[Tuple[str, str]]:
     for child in root.getiterator():
         if child.tag == 'title':
             t: str = child.text
+            t = t.replace('\'', '"')
+
             title.append(t)
         elif child.tag == 'created':
             d: str = child.text
@@ -37,7 +39,7 @@ def read_xml() -> List[Tuple[str, str]]:
 def main() -> None:
     extract: List[Tuple[str, str]] = read_xml()
     for e in extract:
-        print(f'git commit --date=\'{e[1]}\' --message=\'{e[0]}\' --allow-empty')
+        print(f'git commit --date=\'{e[1]}\' --message=\'{e[0]}\' --allow-empty;')
 
 
 if __name__ == '__main__':
